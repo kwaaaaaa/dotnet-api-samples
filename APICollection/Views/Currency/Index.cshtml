@@ -1,0 +1,38 @@
+﻿@model List<APICollection.Models.Currency>
+
+@{
+    ViewData["Title"] = "Currency";
+}
+
+<h4>Latest Exchange Rates (USD)</h4>
+
+<div class="row mt2">
+
+    @foreach (var item in Model)
+    {
+        string thisStyle = (item.Name == "EUR" || item.Name == "JPY" || item.Name == "USD") ? "background-color: yellow;" : "";
+
+        <div class="col-sm-4">
+            <dl class="dl-horizontal" style="@thisStyle">
+                <dt>
+                    @Html.DisplayFor(model => item.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Rate)
+                </dd>
+            </dl>
+        </div>
+    }
+
+</div>
+
+<div id="About">
+    <ul>
+        <li>FX Rates released publicly by European Central Bank</li>
+    </ul>
+</div>
+
+<div style="margin-top: 2em;">
+    <p>Data Powered by <a href="http://fixer.io/" target="_blank">FixerIO</a></p>
+</div>
+

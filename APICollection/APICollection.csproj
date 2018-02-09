@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>2bf82ea0-c36c-4a73-b73b-70b677d6a00a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

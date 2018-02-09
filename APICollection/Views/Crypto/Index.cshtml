@@ -1,0 +1,42 @@
+﻿@model List<APICollection.Models.Crypto>
+
+@{
+    ViewData["Title"] = "Crypto Exchange Rates";
+}
+
+<div class="mt2">
+    <h4>Below are a list of the BTC Exchange Rates to Other CryptoCurrencies</h4>
+</div>
+
+
+<div class="mt2">
+    <table>
+        <tr>
+            <th>CODE</th>
+            <th>Exchange to BTC</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            string thisStyle = (item.Currency == "ETH") ? "background-color: yellow;" : "";
+            <tr style="@thisStyle">
+                <td>
+                    @Html.DisplayFor(model => item.Currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Rate)
+                </td>
+            </tr>
+        }
+</table>
+</div>
+
+<div id="About">
+    <ul>
+        <li>This API can only be called 100 times a day since since I'm using the free api key</li>
+    </ul>
+</div>
+
+<div style="margin-top: 2em;">
+    <p>Data Powered by <a href="https://www.coinapi.io" target="_blank">Coin API</a></p>
+</div>
+

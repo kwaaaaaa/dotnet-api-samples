@@ -1,0 +1,66 @@
+﻿@model List<APICollection.Models.Weather>
+
+@{
+    ViewData["Title"] = "Weather";
+}
+
+<div class="row mt2">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-5">
+            <h4>Weather @Html.DisplayFor(model => item.City)</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => item.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => item.Wind)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Wind)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => item.Humidity)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Humidity)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => item.MinTemp)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.MinTemp)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => item.MaxTemp)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.MaxTemp)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => item.Scale)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => item.Scale)
+                </dd>
+            </dl>
+        </div>
+    }
+
+</div>
+
+<div id="About">
+    <ul>
+        <li>Winds are categorized based on the Beaufort Scale</li>
+    </ul>
+</div>
+
+<div style="margin-top: 2em;">
+    <p>Data Powered by <a href="http://openweathermap.org/" target="_blank">OpenWeather</a></p>
+</div>
+
