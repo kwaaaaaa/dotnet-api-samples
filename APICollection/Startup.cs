@@ -2,15 +2,16 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace APICollection
 {
     public class Startup
     {
-        public static string _weatherSecret = null;
-        public static string _cryptoSecret = null;
         public Startup(IConfiguration configuration)
         {
+            var builder = new ConfigurationBuilder();
+            builder.AddUserSecrets<Startup>();
             Configuration = configuration;
         }
 
@@ -19,14 +20,16 @@ namespace APICollection
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            _weatherSecret = Configuration["WeatherKey"];
-            _cryptoSecret = Configuration["CryptoKey"];
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+            var logger = loggerFactory.CreateLogger("Startup");
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

@@ -17,7 +17,7 @@ namespace APICollection.Controllers
             // url is static for now
             string baseCoin = "BTC";
             string base_url = "https://rest.coinapi.io";
-            string ck = Startup._cryptoSecret;
+            string ck = Env._cryptoSecret;
             string path_url = $"/v1/exchangerate/{baseCoin}?apikey={ck}&output_format=json";
 
             // call url

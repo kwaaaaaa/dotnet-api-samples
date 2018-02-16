@@ -43,7 +43,7 @@ namespace APICollection.Controllers
             string base_url = "http://api.openweathermap.org";
             string path_url = string.Format("/data/2.5/weather?q={0}&appid={1}&units=metric",
                 city,
-                Startup._weatherSecret
+                Env._weatherSecret
                 );
 
             // call url
